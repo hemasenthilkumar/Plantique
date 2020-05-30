@@ -2,6 +2,7 @@ package com.example.plantique;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,30 +15,36 @@ import cz.msebera.android.httpclient.Header;
 public class MainActivity extends AppCompatActivity {
 
     private TextView message;
-    private EditText us,pwd;
-    String s="",res="";
+    private EditText us, pwd;
+    String s = "", res = "";
+    Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        message=findViewById(R.id.Text);
+        message = findViewById(R.id.Text);
     }
 
-    public void login(View view)
+    public void sign(View view)
     {
-        us=findViewById(R.id.editText);
-        pwd=findViewById(R.id.editText2);
-        s="http://192.168.1.2:5000/login?us="+us.getText().toString()+"&ps="+pwd.getText().toString();
+        redirect();
+    }
+
+    public void login(View view) {
+        us = findViewById(R.id.editText);
+        pwd = findViewById(R.id.editText2);
+        s = "http://192.168.1.5:5000/login?us=" + us.getText().toString() + "&ps=" + pwd.getText().toString();
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(s, new AsyncHttpResponseHandler() {
 
 
             @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody)
-            {
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
                 message.setText("Login Success!");
+
+
             }
 
             @Override
@@ -46,8 +53,15 @@ public class MainActivity extends AppCompatActivity {
                 message.setText("Login Failure!");
             }
 
+
         });
 
+    }
+
+    public void redirect()
+    {
+        i=new Intent(this,SignupA.class);
+        startActivity(i);
     }
 
 
