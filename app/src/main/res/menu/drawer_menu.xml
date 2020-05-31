@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:title="Connect">
+    <menu>
+
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+        <item
+            android:id="@+id/edit"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="My Profile" />
+        <item
+            android:id="@+id/friend"
+            android:icon="@drawable/ic_supervisor_account_black_24dp"
+            android:title="Friends" />
+
+        <item
+            android:id="@+id/myproduct"
+            android:icon="@drawable/ic_green"
+            android:title="My Products" />
+    </menu>
+</item>
+
+    <item android:title="Shop">
+        <menu>
+
+            <item
+                android:id="@+id/purchase"
+                android:icon="@drawable/ic_shopping_basket_black_24dp"
+                android:title="Purchase" />
+            <item
+                android:id="@+id/order"
+                android:icon="@drawable/ic_assignment_black_24dp"
+                android:title="Orders" />
+            <item
+                android:id="@+id/cart"
+                android:icon="@drawable/ic_shopping_cart_black_24dp"
+                android:title="Cart" />
+            <item
+                android:id="@+id/product"
+                android:icon="@drawable/ic_add_circle_outline_black_24dp"
+                android:title="Add Products" />
+
+
+        </menu>
+    </item>
+
+
+</menu>

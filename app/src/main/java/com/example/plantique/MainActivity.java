@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         message = findViewById(R.id.Text);
+        redirect();
     }
 
     public void sign(View view)
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void redirect()
     {
-        i=new Intent(this,SignupA.class);
+        i=new Intent(this,HomeActivity.class);
         startActivity(i);
     }
 
