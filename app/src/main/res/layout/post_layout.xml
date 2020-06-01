@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_margin="4dp"
+    android:background="#3BD6CF89">
+
+    <TextView
+        android:id="@+id/posttext"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text=""
+        android:paddingTop="5dp"/>
+    <View
+        android:id="@+id/row_divider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/posttext"/>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:text="Name"
+        android:paddingLeft="10dp"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:layout_alignLeft="@+id/posttext"
+        android:layout_alignBottom="@+id/posttext"/>
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textStyle="italic"
+        android:textSize="10sp"
+        android:paddingRight="10dp"
+        android:layout_alignRight="@+id/posttext"
+        android:layout_alignBottom="@+id/posttext" />
+
+</RelativeLayout>
