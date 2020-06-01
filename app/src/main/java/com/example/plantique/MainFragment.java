@@ -1,9 +1,14 @@
 package com.example.plantique;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -19,34 +24,57 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 
 import cz.msebera.android.httpclient.Header;
 
+import static android.preference.PreferenceManager.*;
+
 public class MainFragment extends Fragment {
     String s="";
+    MyApplication a;
+    private onFragmentBtnSelected listener;
     private ListView listView;
     private String[] posts;
     private PostDataProvider dataProvider;
     private PostAdapter adapter;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_main,container,false);
+
+        Button clickme=view.findViewById(R.id.button4);
+        final EditText text=view.findViewById(R.id.editText5);
+        clickme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onButtonSelected(text.getText().toString());
+            }
+        });
         display_post(view);
         return view;
+    }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context  instanceof onFragmentBtnSelected)
+        {
+            listener=(onFragmentBtnSelected) context;
+        }
+
+        else
+        {
+            throw new ClassCastException(context.toString() + "must implement" );
+        }
+
+    }
+
+    public interface onFragmentBtnSelected{
+        public void onButtonSelected(String s);
     }
 
     public void display_list(List<PostClass> map,View view)
@@ -61,12 +89,11 @@ public class MainFragment extends Fragment {
 
 
     }
-
     public void display_post(final View view)
     {
-
+        String usnm = ((MyApplication) view.getContext().getApplicationContext()).getUsername();
         //post=view.findViewById(R.id.posts);
-        s = "http://192.168.1.6:5000/userhome?usname=hema";
+        s = "http://192.168.1.6:5000/userhome?usname="+usnm;
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(s, new AsyncHttpResponseHandler() {
 
