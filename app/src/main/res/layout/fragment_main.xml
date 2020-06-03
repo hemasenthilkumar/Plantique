@@ -9,18 +9,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <EditText
         android:id="@+id/editText5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginLeft="34dp"
-        android:layout_marginTop="16dp"
-        android:text="Input here"
+        android:layout_marginTop="10dp"
         android:paddingTop="70dp"
+        android:text="Input here"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/button8"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="154dp"
+        android:layout_marginTop="0dp"
+        android:paddingLeft="50dp"
+        android:src="@drawable/ic_location_on_black_24dp"
+        android:text="Button"
+        tools:src="@drawable/ic_location_on_black_24dp" />
 
     <Button
         android:id="@+id/button4"
@@ -42,6 +53,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="50dp" />
-
-
 </LinearLayout>

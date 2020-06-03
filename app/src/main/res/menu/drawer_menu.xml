@@ -2,7 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item android:title="Connect">
     <menu>
-
         <item
             android:id="@+id/home"
             android:icon="@drawable/ic_home_black_24dp"
@@ -42,10 +41,19 @@
                 android:id="@+id/product"
                 android:icon="@drawable/ic_add_circle_outline_black_24dp"
                 android:title="Add Products" />
-
-
         </menu>
     </item>
-
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="Settings" />
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_power_settings_new_black_24dp"
+                android:title="Logout" />
+        </menu>
+    </item>
 
 </menu>

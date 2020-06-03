@@ -10,7 +10,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.loopj.android.http.AsyncHttpClient;
@@ -33,11 +35,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
        FragmentManager fragmentManager;
        FragmentTransaction fragmentTransaction;
         NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -67,6 +69,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
 
         }
+
         if(menuItem.getItemId()==R.id.edit)
         {
             fragmentManager=getSupportFragmentManager();
@@ -75,6 +78,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
 
         }
+
+        if(menuItem.getItemId()==R.id.order)
+        {
+            fragmentManager=getSupportFragmentManager();
+            fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment,new OrderFragment());
+            fragmentTransaction.commit();
+
+        }
+
 
         if(menuItem.getItemId()==R.id.friend)
         {
