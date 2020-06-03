@@ -9,10 +9,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.loopj.android.http.AsyncHttpClient;
@@ -88,7 +91,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
-
         if(menuItem.getItemId()==R.id.friend)
         {
             fragmentManager=getSupportFragmentManager();
@@ -97,7 +99,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
 
         }
+
+        if(menuItem.getItemId()==R.id.logout)
+        {
+            toast("Logout Successful");
+            Intent i=new Intent(this,MainActivity.class);
+            startActivity(i);
+
+        }
         return true;
+    }
+
+    public void toast(String res)
+    {
+        Toast.makeText(HomeActivity.this,res, Toast.LENGTH_LONG).show();
     }
 
     @Override
