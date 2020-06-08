@@ -1,6 +1,8 @@
 package com.example.plantique;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.view.View;
 import android.os.Bundle;
 import android.widget.AdapterView;
@@ -62,7 +64,7 @@ public class SignupA extends AppCompatActivity {
         info.add(bday.getText().toString());
         info.add(up.toString());
 
-        s = "http://192.168.1.5:5000/signup?info="+info;
+        s = "http://192.168.1.6:5000/signup?info="+info;
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(s, new AsyncHttpResponseHandler() {
             @Override
@@ -74,6 +76,7 @@ public class SignupA extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 toast(view,response);
+                redirect(us.getText().toString());
             }
 
             @Override
@@ -85,6 +88,16 @@ public class SignupA extends AppCompatActivity {
         });
 
     }
+
+    public void redirect(String u)
+    {
+        ((MyApplication)this.getApplicationContext()).setUsername(u);
+        Intent i=new Intent(this,HomeActivity.class);
+        startActivity(i);
+    }
+
+
+
 
     public void toast(View view, String res)
     {

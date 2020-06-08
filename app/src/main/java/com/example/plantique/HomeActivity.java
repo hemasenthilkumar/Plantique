@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -38,6 +39,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
        FragmentManager fragmentManager;
        FragmentTransaction fragmentTransaction;
         NavigationView navigationView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +103,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
+        if(menuItem.getItemId()==R.id.product)
+        {
+            fragmentManager=getSupportFragmentManager();
+            fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment,new AddProductFragment());
+            fragmentTransaction.commit();
+
+        }
+
         if(menuItem.getItemId()==R.id.logout)
         {
             toast("Logout Successful");
@@ -109,6 +121,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         return true;
     }
+
 
     public void toast(String res)
     {

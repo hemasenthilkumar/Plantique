@@ -24,4 +24,13 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="open">open</string>
     <string name="close">close</string>
+
+    <string name="category_prompt">Choose a category for the plant</string>
+
+    <string-array name="cat_arrays">
+        <item>Indoor</item>
+        <item>Outdoor</item>
+        <item>Decorative</item>
+    </string-array>
+
 </resources>
