@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.loopj.android.http.*;
 
 import cz.msebera.android.httpclient.Header;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        TypefaceProvider.registerDefaultIconSets();
         setContentView(R.layout.activity_main);
         message = findViewById(R.id.Text);
 

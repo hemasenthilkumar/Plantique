@@ -120,6 +120,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
 
         }
+        if(menuItem.getItemId()==R.id.cart)
+        {
+            fragmentManager=getSupportFragmentManager();
+            fragmentTransaction=fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.container_fragment,new CartFragment());
+            fragmentTransaction.commit();
+
+        }
 
 
         if(menuItem.getItemId()==R.id.logout)
