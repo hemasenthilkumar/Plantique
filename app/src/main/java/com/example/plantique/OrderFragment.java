@@ -94,20 +94,27 @@ public class OrderFragment extends Fragment
         TableRow tbrow= new TableRow(this.getContext());
         //Table headers
         TextView tv0=new TextView(this.getContext());
-        tv0.setText("Products");
+        tv0.setText("Product");
+        tv0.setGravity(Gravity.CENTER);
+        tv0.setWidth(15);
+        tv0.setBackgroundResource(R.drawable.border);
         tbrow.addView(tv0);
         TextView tv1=new TextView(this.getContext());
-        tv1.setText("Total Amount");
+        tv1.setText("Amount");
+        tv1.setGravity(Gravity.CENTER);
+        tv1.setBackgroundResource(R.drawable.border);
         tbrow.addView(tv1);
         TextView tv2=new TextView(this.getContext());
-        tv2.setText("Order Date");
+        tv2.setText("Date");
+        tv2.setGravity(Gravity.CENTER);
+        tv2.setBackgroundResource(R.drawable.border);
         tbrow.addView(tv2);
+       stk.setBackgroundResource(R.drawable.border);
         stk.addView(tbrow);
 
         for(int i=0;i<testV.length();i++)
         {
             TableRow trow=new TableRow(this.getContext());
-
             JSONObject j= (JSONObject) testV.get(i);
             Iterator<String> keys = j.keys();
             while(keys.hasNext())
@@ -116,29 +123,13 @@ public class OrderFragment extends Fragment
                 TextView t1=new TextView(this.getContext());
                 t1.setText(j.get(key).toString());
                 t1.setGravity(Gravity.CENTER);
+                t1.setBackgroundResource(R.drawable.border);
                 trow.addView(t1);
             }
+           stk.setBackgroundResource(R.drawable.border);
             stk.addView(trow);
         }
 
-
-//        for(int i=0;i<10;i++)
-//        {
-//            TableRow trow=new TableRow(this.getContext());
-//            TextView t1=new TextView(this.getContext());
-//            t1.setText(" "+i);
-//            t1.setGravity(Gravity.CENTER);
-//            trow.addView(t1);
-//            TextView t2=new TextView(this.getContext());
-//            t2.setText(" "+(i+1));
-//            t2.setGravity(Gravity.CENTER);
-//            trow.addView(t2);
-//            TextView t3=new TextView(this.getContext());
-//            t3.setText(" "+(i+2));
-//            t3.setGravity(Gravity.CENTER);
-//            trow.addView(t3);
-//            stk.addView(trow);
-//        }
     }
 }
 

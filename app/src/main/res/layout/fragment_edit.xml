@@ -14,10 +14,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="387dp"
-        android:layout_marginEnd="115dp"
-        android:layout_marginRight="115dp"
         android:text="Role"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,19 +88,15 @@
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/textView13" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginRight="136dp"
-        android:layout_marginBottom="65dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView22"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView20"
-        app:srcCompat="@drawable/ic_edit_black_24dp"
-        tools:ignore="VectorDrawableCompat" />
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginBottom="75dp"
+        android:text="Your profile"
+        app:layout_constraintBottom_toTopOf="@+id/textView19"
+        app:layout_constraintStart_toStartOf="@+id/textView19" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
