@@ -76,6 +76,7 @@ public class SignupA extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 toast(view,response);
+                if(response.equals("Sign up successful"))
                 redirect(us.getText().toString());
             }
 
