@@ -1,7 +1,10 @@
 package com.example.plantique;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +17,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -33,6 +38,9 @@ import cz.msebera.android.httpclient.Header;
 
 public class CartFragment extends Fragment {
     String s;
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
+    String phoneNo;
+    String message;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,7 +50,9 @@ public class CartFragment extends Fragment {
 
     }
 
-    private void display_cart(final View view)
+
+
+        private void display_cart(final View view)
     {
 
         String usnm = ((MyApplication) view.getContext().getApplicationContext()).getUsername();
@@ -145,18 +155,46 @@ public class CartFragment extends Fragment {
         }
 
         TextView tt=view.findViewById(R.id.textView16);
-        tt.setText("Total Amount to Pay"+Integer.toString(Total_price));
+        tt.setText("Total Amount to Pay: "+Integer.toString(Total_price));
         Button button=view.findViewById(R.id.button7);
         final int finalTotal_price = Total_price;
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 clear_cart(view,Integer.toString(finalTotal_price));
+                send_sms();
             }
         });
 
 
     }
-    public void removeprod(final View view, String pid)
+
+    protected void send_sms()
+    {
+        phoneNo = "9865972820";
+        message = "Your order has been placed and it will reach you by a week";
+
+        if (ContextCompat.checkSelfPermission(CartFragment.this.getContext(),
+                Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(CartFragment.this.getActivity(),
+                    Manifest.permission.SEND_SMS)) {
+            } else {
+                ActivityCompat.requestPermissions(CartFragment.this.getActivity(),
+                        new String[]{Manifest.permission.SEND_SMS},
+                        MY_PERMISSIONS_REQUEST_SEND_SMS);
+            }
+        }
+        else {
+            sendSMS();
+        }
+
+    }
+
+
+
+
+
+        public void removeprod(final View view, String pid)
     {
         String usnm = ((MyApplication) view.getContext().getApplicationContext()).getUsername();
         s = "http://192.168.1.6:5000//removeProduct?usname="+usnm+"&pid="+pid;
@@ -219,4 +257,30 @@ public class CartFragment extends Fragment {
     {
         Toast.makeText(CartFragment.this.getContext(),res, Toast.LENGTH_LONG).show();
     }
-}
+
+    protected void sendSMS()
+    {
+        SmsManager smsManager = SmsManager.getDefault();
+        smsManager.sendTextMessage(phoneNo, null, message, null, null);
+        Toast.makeText(CartFragment.this.getContext(),"SMS sent!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_SEND_SMS: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                {
+                    sendSMS();
+                } else
+                    {
+                        Toast.makeText(CartFragment.this.getContext(),"SMS Failure", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        }
+
+
+    }
+    }
