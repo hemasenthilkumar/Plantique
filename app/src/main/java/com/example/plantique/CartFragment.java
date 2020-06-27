@@ -153,25 +153,26 @@ public class CartFragment extends Fragment {
             stk.setBackgroundResource(R.drawable.border);
             stk.addView(trow);
         }
-
+        final Integer totalp=Total_price;
         TextView tt=view.findViewById(R.id.textView16);
         tt.setText("Total Amount to Pay: "+Integer.toString(Total_price));
         Button button=view.findViewById(R.id.button7);
         final int finalTotal_price = Total_price;
+        final int finalTotal_price1 = Total_price;
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 clear_cart(view,Integer.toString(finalTotal_price));
-                send_sms();
+                send_sms(totalp);
             }
         });
 
 
     }
 
-    protected void send_sms()
+    protected void send_sms(Integer p)
     {
-        phoneNo = "9865972820";
-        message = "Your order has been placed and it will reach you by a week";
+        phoneNo = "9944954582";
+        message = "Plantique: \n Your order has been placed and it will reach you by a week. Total amount to pay: "+p.toString();
 
         if (ContextCompat.checkSelfPermission(CartFragment.this.getContext(),
                 Manifest.permission.SEND_SMS)
